@@ -1,0 +1,90 @@
+<odoo>
+  <data>
+    <menuitem id="menu_main_manage"
+              name="MANAGE"
+              sequence="1"
+              web_icon="manage,static/description/icon.png"/>
+
+    <!--*************************************************************************-->
+    <menuitem id="menu_sub_resources_material"
+              name="Resourse materials"
+              parent="menu_main_manage"
+              sequence="10"/>
+
+
+    <menuitem id="menu_sub_sub_product"
+              name="All products"
+              parent="menu_sub_resources_material"
+              action="stock.product_template_action_product"
+              sequence="11"/>
+
+    <menuitem id="menu_sub_sub_category_equipment"
+              name="All equipments"
+              parent="menu_sub_resources_material"
+              action="maintenance.hr_equipment_action"
+              groups="maintenance.group_equipment_manager,base.group_user"
+              sequence="12"/>
+
+    <!--*************************************************************************-->
+    <menuitem id="menu_sub_resources_human"
+              name="Resourse human"
+              parent="menu_main_manage"
+              sequence="20"/>
+
+    <menuitem id="menu_sub_sub_employees"
+              name="Employees"
+              parent="menu_sub_resources_human"
+              sequence="21"
+              groups="hr_attendance.group_hr_attendance_user"
+              action="hr.open_view_employee_list_my"/>
+
+    <menuitem id="menu_sub_sub_partner"
+              name="Partners"
+              action="contacts.action_contacts"
+              parent="menu_sub_resources_human"
+              sequence="22"/>
+
+    <menuitem action="base.action_res_users"
+              name="Users"
+              id="menu_sub_sub_users" 
+              parent="menu_sub_resources_human"
+              sequence="23"/>
+
+    <!--*************************************************************************-->
+    <menuitem id="menu_sub_manage_resources"
+              name="Manage resources"
+              parent="menu_main_manage"
+              sequence="30"/>
+
+    <menuitem action="project.open_view_project_all_config"
+              id="menu_sub_sub_project"
+              name="Projects"
+              parent="menu_sub_manage_resources"
+              sequence="31"/>
+
+    <!--*************************************************************************-->
+    <menuitem id="menu_sub_operation"
+              name="Operation"
+              parent="menu_main_manage"
+              sequence="40"/>
+
+    <menuitem action="purchase.purchase_rfq"
+              name="Price request"
+              id="menu_sub_sub_price_request"
+              parent="menu_sub_operation"
+              sequence="41"/>
+
+    <menuitem name="Order and reception"
+              id="menu_sub_sub_order_reception"
+              action="purchase.purchase_form_action"
+              parent="menu_sub_operation"
+              sequence="42"/>
+
+    <menuitem name="Transferts"
+              id="menu_sub_sub_transfert"
+              action="stock.action_picking_tree_all"
+              parent="menu_sub_operation"
+              sequence="43"
+    />
+  </data>
+</odoo>

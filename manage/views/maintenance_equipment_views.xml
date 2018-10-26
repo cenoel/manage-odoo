@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+
+    <record id="hr_equipment_view_form_inherit" model="ir.ui.view">
+      <field name="name">Sompni.product.equipment.form</field>
+      <field name="model">maintenance.equipment</field>
+      <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form/sheet" position="before">
+          <header>
+            <field name="state" widget="statusbar" statusbar_visible="available,patient,unavailable"
+                   readonly="1"/>
+          </header>
+        </xpath>
+        <xpath expr="//form/sheet/group/group/field[@name='owner_user_id']" position="after">
+          <field name="product_template_id"/>
+          <field name="is_machine_or_accessory"/>
+          <field name="lot_id"/>
+          <field name="location_id"/>
+          <field name="removal_strategy_id"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="hr_equipment_view_tree_inherit" model="ir.ui.view">
+      <field name="name">equipment tree</field>
+      <field name="model">maintenance.equipment</field>
+      <field name="inherit_id" ref="maintenance.hr_equipment_view_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//tree/field[@name='category_id']" position="after">
+          <field name="product_template_id"/>
+          <field name="is_machine_or_accessory"/>
+          <field name="lot_id"/>
+          <field name="location_id"/>
+          <field name="state"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>
